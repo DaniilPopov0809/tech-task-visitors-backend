@@ -2,7 +2,7 @@ const visitorModel = require("../../models/visitor");
 
 const { HttpError } = require("../../utils/");
 
-const update =  async (req, res, next) => {
+const update =  async (req, res) => {
     const { id } = req.params;
     const result = await visitorModel.update(id, req.body);
     if (!result) {
