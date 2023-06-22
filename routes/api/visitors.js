@@ -9,12 +9,12 @@ const { addVisitorSchema, patchVisitorsSchema } = require("../../schemas");
 
 router.get("/", authenticate,  ctrlVisitor.readAll);
 
-router.get("/:id", ctrlVisitor.readOne);
+router.get("/:id",  authenticate, ctrlVisitor.readOne);
 
-router.delete("/:id", ctrlVisitor.remove);
+router.delete("/:id", authenticate, ctrlVisitor.remove);
 
-router.post("/", validateBody(addVisitorSchema), ctrlVisitor.create);
+router.post("/", authenticate, validateBody(addVisitorSchema), ctrlVisitor.create);
 
-router.patch("/:id", validateBody(patchVisitorsSchema), ctrlVisitor.update);
+router.patch("/:id", authenticate, validateBody(patchVisitorsSchema), ctrlVisitor.update);
 
 module.exports = router;
