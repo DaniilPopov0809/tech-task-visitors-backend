@@ -3,11 +3,11 @@ const router = express.Router();
 
 const { ctrl } = require("../../controllers");
 
-const { validateBody } = require("../../middlewares");
+const { validateBody, authenticate } = require("../../middlewares");
 
 const { addVisitorSchema, patchVisitors } = require("../../schemas");
 
-router.get("/", ctrl.readAll);
+router.get("/", authenticate,  ctrl.readAll);
 
 router.get("/:id", ctrl.readOne);
 
