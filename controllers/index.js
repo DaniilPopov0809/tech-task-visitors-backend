@@ -1,5 +1,7 @@
-const ctrl = require("./visitor");
+const ctrlVisitor = require("./visitor");
+const ctrlAuth = require("./auth");
 
 module.exports = {
-    ctrl,
-}
+  ctrlVisitor,
+  ctrlAuth,
+};

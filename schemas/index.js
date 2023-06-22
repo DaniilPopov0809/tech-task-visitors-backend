@@ -1,7 +1,9 @@
 const addVisitorSchema = require("./addVisitor");
-const patchVisitors = require("./pacthVisitor");
+const patchVisitorsSchema = require("./pacthVisitor");
+const loginSchema = require("./loginSchema");
 
 module.exports = {
   addVisitorSchema,
-  patchVisitors,
+  patchVisitorsSchema,
+  loginSchema,
 };
