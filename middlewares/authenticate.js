@@ -16,11 +16,11 @@ const authenticate = async (req, res, next) => {
   }
 
   try {
-    const { login } = jwt.verify(token, SECRET_KEY);
+    const { username } = jwt.verify(token, SECRET_KEY);
     const data = await fs.readFile(tokenPath, "utf8");
     const dbToken = JSON.parse(data);
 
-    if (!login || dbToken.token !== token) {
+    if (!username  || dbToken.token !== token) {
       next(HttpError(401, "Unauthorized"));
     }
     next();

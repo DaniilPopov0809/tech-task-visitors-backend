@@ -7,18 +7,18 @@ require("dotenv").config();
 const { ADMIN_USERNAME, ADMIN_PASSWORD, SECRET_KEY } = process.env;
 
 const login = async (req, res) => {
-  const { login, password } = req.body;
+  const { username, password } = req.body;
 
-  if (login !== ADMIN_USERNAME || password !== ADMIN_PASSWORD) {
+  if (username !== ADMIN_USERNAME || password !== ADMIN_PASSWORD) {
     throw HttpError(401, "Unauthorized");
   }
 
-  const token = jwt.sign({ login }, SECRET_KEY, {
+  const token = jwt.sign({ username }, SECRET_KEY, {
     expiresIn: "2h",
   });
   await authModel.login(token);
 
-  res.json({ token });
+  res.json({ username, token });
 };
 
 module.exports = login;
