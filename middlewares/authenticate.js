@@ -23,6 +23,7 @@ const authenticate = async (req, res, next) => {
     if (!username  || dbToken.token !== token) {
       next(HttpError(401, "Unauthorized"));
     }
+    req.username = username;
     next();
   } catch {
     next(HttpError(401, "Unauthorized"));
