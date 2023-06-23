@@ -1,20 +1,20 @@
 const express = require("express");
 const router = express.Router();
 
-const { ctrl } = require("../../controllers");
+const { ctrlVisitor } = require("../../controllers");
 
-const { validateBody } = require("../../middlewares");
+const { validateBody, authenticate } = require("../../middlewares");
 
-const { addVisitorSchema, patchVisitors } = require("../../schemas");
+const { addVisitorSchema, patchVisitorsSchema } = require("../../schemas");
 
-router.get("/", ctrl.readAll);
+router.get("/", authenticate,  ctrlVisitor.readAll);
 
-router.get("/:id", ctrl.readOne);
+router.get("/:id",  authenticate, ctrlVisitor.readOne);
 
-router.delete("/:id", ctrl.remove);
+router.delete("/:id", authenticate, ctrlVisitor.remove);
 
-router.post("/", validateBody(addVisitorSchema), ctrl.create);
+router.post("/", authenticate, validateBody(addVisitorSchema), ctrlVisitor.create);
 
-router.patch("/:id", validateBody(patchVisitors), ctrl.update);
+router.patch("/:id", authenticate, validateBody(patchVisitorsSchema), ctrlVisitor.update);
 
 module.exports = router;
