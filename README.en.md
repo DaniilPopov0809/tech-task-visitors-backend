@@ -11,10 +11,10 @@ The service uses basic authorization through the administrator's login/password.
 ## Implemented
 
 1. Welcome page
-2. The `Visitors` page, which displays information about visitors to the building in tabular form (name, patronymic,
+2. The `Visitors` page, which displays information about visitors to the building in tabular form (name, last name,
     time of entering the building)
 3. You can add, delete or update a visitor to the table.
-4. The table can be filtered by first name, patronymic, and time of entering the building
+4. The table can be filtered by first name, last name, and time of entering the building
 5. When deleting, changing or creating a visitor, the data in the table is updated
 6. Information about the deletion, change or creation of a visitor
 7. Automatic redirection of the user in case of switching to non-existent `route`
